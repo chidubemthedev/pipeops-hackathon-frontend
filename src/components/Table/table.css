@@ -1,0 +1,42 @@
+.td-pending {
+    background-color: #E89D2B1A;
+    border: 0.8px solid #F6D8AA;
+    color: #E89D2B;
+    text-transform: capitalize;
+    padding: 4px 6px;
+	border-radius: 1rem;
+}
+.td-approved, .td-applied {
+    background-color: #4BB5431A;
+    border: 0.8px solid #C3E6C0;
+    color: #4BB543;
+    text-transform: capitalize;
+    padding: 4px 6px;
+	border-radius: 1rem;
+}
+.td-disapproved {
+    background-color: #FED8D8;
+    border: 0.8px solid #FC7E7E;
+    color: #FA3E3E;
+    text-transform: capitalize;
+    padding: 4px 6px;
+	border-radius: 1rem;
+}
+.td-active {
+    background-color: #4BB5431A;
+    border: 0.8px solid #C3E6C0;
+    color: #4BB543;
+    text-transform: capitalize;
+    padding: 4px 6px;
+	border-radius: 1rem;
+}
+.td-type,
+.td-assetType {
+    background-color: transparent;
+    border: 0.8px solid #D1D1D1;
+    text-transform: capitalize;
+    padding: 4px 6px;
+	border-radius: 1rem;
+}
+
+

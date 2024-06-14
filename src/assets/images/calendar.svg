@@ -1,0 +1,69 @@
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="24" height="24" fill="#BEBEBE"/>
+<g id="Create Account" clip-path="url(#clip0_65_988)">
+<rect width="1440" height="1024" transform="translate(-665 -627)" fill="white"/>
+<g id="Background" opacity="0.2" clip-path="url(#clip1_65_988)">
+<g id="dipper">
+</g>
+</g>
+<g id="Wave">
+<path id="Vector" d="M-665 67.625L-605 111.473C-545 156.145 -425 242.605 -305 221.402C-185 199.375 -65 67.625 55 45.5981C175 24.3945 295 110.855 415 100.562C535 90.2695 655 -20.8945 715 -75.0356L775 -130V397H715C655 397 535 397 415 397C295 397 175 397 55 397C-65 397 -185 397 -305 397C-425 397 -545 397 -605 397H-665V67.625Z" fill="url(#paint0_radial_65_988)"/>
+</g>
+<g id="Frame 1000004154">
+<g id="Frame 1000003591" filter="url(#filter0_d_65_988)">
+<rect x="-458" y="-388" width="1025" height="735" rx="10" fill="white"/>
+<g id="Frame 1000004138">
+<g id="Frame 1000004205">
+<g id="Frame 1000004140">
+<g id="Textfield">
+<g id="Input">
+<rect x="-434" y="-16" width="474" height="56" rx="12" stroke="#E8EAED"/>
+<g id="Frame 1000004143">
+<g id="calendar">
+<g id="vuesax/linear/calendar">
+<g id="calendar_2">
+<path id="Vector_2" d="M8 2V5" stroke="#0E0E0E" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Vector_3" d="M16 2V5" stroke="#0E0E0E" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Vector_4" d="M3.5 9.08997H20.5" stroke="#0E0E0E" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Vector_5" d="M21 8.5V17C21 20 19.5 22 16 22H8C4.5 22 3 20 3 17V8.5C3 5.5 4.5 3.5 8 3.5H16C19.5 3.5 21 5.5 21 8.5Z" stroke="#0E0E0E" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Vector_6" d="M15.6947 13.7H15.7037" stroke="#0E0E0E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Vector_7" d="M15.6947 16.7H15.7037" stroke="#0E0E0E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Vector_8" d="M11.9955 13.7H12.0045" stroke="#0E0E0E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Vector_9" d="M11.9955 16.7H12.0045" stroke="#0E0E0E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Vector_10" d="M8.29431 13.7H8.30329" stroke="#0E0E0E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Vector_11" d="M8.29431 16.7H8.30329" stroke="#0E0E0E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+</g>
+</g>
+</g>
+</g>
+</g>
+</g>
+</g>
+</g>
+</g>
+</g>
+</g>
+<defs>
+<filter id="filter0_d_65_988" x="-468.6" y="-402.6" width="1046.2" height="756.2" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+<feOffset dy="-4"/>
+<feGaussianBlur stdDeviation="5.3"/>
+<feComposite in2="hardAlpha" operator="out"/>
+<feColorMatrix type="matrix" values="0 0 0 0 0.745833 0 0 0 0 0.745833 0 0 0 0 0.745833 0 0 0 0.25 0"/>
+<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_65_988"/>
+<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_65_988" result="shape"/>
+</filter>
+<radialGradient id="paint0_radial_65_988" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(-124.15 -582.128) rotate(90) scale(942.642 2575.72)">
+<stop stop-color="#16CEAA" stop-opacity="0"/>
+<stop offset="1" stop-color="#FDFDFD"/>
+</radialGradient>
+<clipPath id="clip0_65_988">
+<rect width="1440" height="1024" fill="white" transform="translate(-665 -627)"/>
+</clipPath>
+<clipPath id="clip1_65_988">
+<rect width="1440" height="1915" fill="white" transform="translate(775 1370) rotate(-180)"/>
+</clipPath>
+</defs>
+</svg>
