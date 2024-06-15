@@ -1,7 +1,7 @@
 /** this would wrap all the api endpoints and base urls */
 export const baseUrl =
   import.meta.env.VITE_APP_BASE_URL ??
-  "https://dope-platform.uc.r.appspot.com/v1";
+  "https://valid-side-deranged-harmony-production.pipeops.app";
 // export const baseUrl = import.meta.env.VITE_BASE_URL;
 
 export const url = {

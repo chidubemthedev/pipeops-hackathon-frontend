@@ -59,8 +59,8 @@ const Login = () => {
   return (
     <section className="bg-loginBottomBackground bg-bottom bg-no-repeat bg-cover">
       <div className="bg-white shadow-loginHeaderShadow fixed w-[100%]">
-        <h1 className="py-[20px] px-[45px] text-primary text-[30px] font-[700]">
-          DOPE
+        <h1 className="py-[20px] px-[45px] text-primary text-center text-[30px] font-[700]">
+          VINANCE
         </h1>
       </div>
 
