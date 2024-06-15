@@ -1,5 +1,4 @@
 import { MenuIcon } from "../../assets/icons";
-import Logo from "../../assets/icons/Logo.svg";
 const Header = ({ userData, isOpen, setIsOpen }: any) => {
   function handleClick() {
     setIsOpen(!isOpen);
@@ -16,9 +15,7 @@ const Header = ({ userData, isOpen, setIsOpen }: any) => {
         className="lg:hidden flex items-center justify-center gap-[20px]"
       >
         <MenuIcon />
-        <div className="lg:hidden">
-          <img src={Logo} alt="" className={`lg:mb-[62px] image`} />
-        </div>
+        <h1 className="font-[900] text-2xl capitalize text-primary">VINANCE</h1>
       </div>
 
       <div className="lg:flex px-3 space-x-2 max-w-[400px] h-10 w-full  rounded-[12px] items-center hidden" />

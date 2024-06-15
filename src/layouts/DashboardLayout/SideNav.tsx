@@ -1,6 +1,4 @@
 import CloseIcon from "../../assets/icons/MdiClose.svg";
-import Logo from "../../assets/images/Logo.svg";
-
 import { clearState } from "../../features/auth/authSlice";
 import { useDispatch } from "react-redux";
 import { Link, NavLink, useNavigate, useLocation } from "react-router-dom";
@@ -65,12 +63,14 @@ const SideNav = ({ isOpen, setIsOpen }: any) => {
           : "w-0 left-[-20%] md:left-[-40%] lg:left-0 opacity-1"
       } lg:block md:w-[25%] lg:w-[18%] bg-white h-screen fixed top-0 p-5 px-0 flex flex-col justify-between z-50 pt-0 sidenav-transition font-walsheim`}
     >
-      <div className="pt-5 lg:pt-12 h-full overflow-y-auto hidden-scrollbar">
+      <div className="pt-5 lg:pt-8 h-full overflow-y-auto hidden-scrollbar">
         <Link
           to={"/"}
           className={`hidden lg:block lg:ml-[22px] lg:mb-[62px] px-5 `}
         >
-          <img src={Logo} alt="" className={`lg:mb-[62px] image`} />
+          <h1 className="font-[900] text-2xl capitalize text-primary">
+            VINANCE
+          </h1>
         </Link>
         <img
           src={CloseIcon}
@@ -89,7 +89,7 @@ const SideNav = ({ isOpen, setIsOpen }: any) => {
                       // eslint-disable-next-line no-constant-condition
                       `${
                         isNavActive(nav)
-                          ? "bg-[#D0F5EE80] text-primary font-bold hover:text-orange"
+                          ? "bg-[#f5d0d080] text-primary font-bold hover:text-orange"
                           : ""
                       } relative flex items-center gap-x-5  p-4 px-0 pl-10 rounded-lg cursor-pointer w-full text-[#8C8B8B] hover:text-[#8C8B8B] `
                     }
@@ -138,7 +138,7 @@ const SideNav = ({ isOpen, setIsOpen }: any) => {
                           <p
                             className={`text-sm  font-base hover:text-inherit p-1 px-2 rounded-md ${
                               isNavActive(nav)
-                                ? "bg-[#D0F5EE80] text-primary font-medium hover:text-orange mt-4"
+                                ? "bg-[#d0bad3] text-primary font-medium hover:text-orange mt-4"
                                 : "mt-4"
                             }`}
                           >
@@ -156,7 +156,7 @@ const SideNav = ({ isOpen, setIsOpen }: any) => {
                   className={({ isActive }) =>
                     `${
                       isActive
-                        ? "bg-[#D0F5EE80] text-primary font-bold hover:text-orange"
+                        ? "bg-[#d0bad3] text-primary font-bold hover:text-orange"
                         : ""
                     } relative flex items-center gap-x-5  p-4 px-0 pl-10 rounded-lg cursor-pointer w-full text-[#8C8B8B] hover:text-[#8C8B8B] `
                   }
