@@ -5,7 +5,7 @@ import { Link, NavLink, useNavigate, useLocation } from "react-router-dom";
 import { useAppSelector } from "../../app/hooks";
 import { AppDispatch } from "../../app/store";
 import { appNavs } from "../../util/helpers";
-import { LogoutIcon, SideBarDivider } from "../../assets/icons";
+import { Logo, LogoutIcon, SideBarDivider } from "../../assets/icons";
 
 const SideNav = ({ isOpen, setIsOpen }: any) => {
   const authUser = useAppSelector((state) => state.auth);
@@ -68,9 +68,10 @@ const SideNav = ({ isOpen, setIsOpen }: any) => {
           to={"/"}
           className={`hidden lg:block lg:ml-[22px] lg:mb-[62px] px-5 `}
         >
-          <h1 className="font-[900] text-2xl capitalize text-primary">
+          {/* <h1 className="font-[900] text-2xl capitalize text-primary">
             VINANCE
-          </h1>
+          </h1> */}
+          <Logo />
         </Link>
         <img
           src={CloseIcon}
@@ -109,7 +110,7 @@ const SideNav = ({ isOpen, setIsOpen }: any) => {
                     )}
                   </div>
                   <div
-                    className="nav-dropdown  relative"
+                    className="nav-dropdown relative"
                     id={`nav-dropdown-${nav.name}`}
                   >
                     <div className="absolute top-0 right-[76%]">
@@ -122,7 +123,7 @@ const SideNav = ({ isOpen, setIsOpen }: any) => {
                       >
                         <path
                           d="M1 0.5V31.5M1 31.5H12.5M1 31.5V74C1 75.6569 2.34315 77 4 77H12.5"
-                          stroke="#8C8B8B"
+                          stroke="#601A35"
                         />
                       </svg>
                     </div>

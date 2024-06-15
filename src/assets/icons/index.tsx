@@ -305,3 +305,38 @@ export const MinusIcon = () => {
     </svg>
   );
 };
+
+export const Logo = () => {
+  return (
+    <svg
+      width="200"
+      height="200"
+      viewBox="0 0 200 200"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      xmlnsXlink="http://www.w3.org/1999/xlink"
+    >
+      <style>
+        {`
+          .text {
+            font-family: Arial, sans-serif;
+            font-size: 36px;
+            font-weight: bold;
+            fill: #601A35;
+          }
+        `}
+      </style>
+      <g transform="translate(65, 40)">
+        <path
+          d="M24 0H4L0 10H18L28 34H10V38H30L40 10H26L24 0Z"
+          fill="#601A35"
+        />
+        <circle cx="10" cy="38" r="4" fill="#601A35" />
+        <circle cx="30" cy="38" r="4" fill="#601A35" />
+      </g>
+      <text x="20" y="180" className="text">
+        Vinance
+      </text>
+    </svg>
+  );
+};
