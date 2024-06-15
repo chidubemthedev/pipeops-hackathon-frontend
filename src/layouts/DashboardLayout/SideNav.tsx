@@ -50,7 +50,6 @@ const SideNav = ({ isOpen, setIsOpen }: any) => {
       : navIcon?.classList.add("active");
   };
   const logOutUser = () => {
-    document.cookie = "ttk=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
     dispatch(clearState());
     navigate("/login", { replace: true });
   };
@@ -71,7 +70,9 @@ const SideNav = ({ isOpen, setIsOpen }: any) => {
           {/* <h1 className="font-[900] text-2xl capitalize text-primary">
             VINANCE
           </h1> */}
-          <Logo />
+          <div className="flex justify-center items-center">
+            <Logo />
+          </div>
         </Link>
         <img
           src={CloseIcon}

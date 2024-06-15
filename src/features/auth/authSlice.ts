@@ -63,9 +63,6 @@ export const authSlice = createSlice({
     setupdatePasswordStatus: (state, { payload }) => {
       state.updatePasswordStatus = payload;
     },
-    getAuthToken: (state) => {
-      return state.token;
-    },
   },
   extraReducers: (builder) => {
     builder
@@ -105,8 +102,8 @@ export const authSlice = createSlice({
       .addCase(logoutUser.fulfilled, (state) => {
         state.loading = false;
         state.activeUser = false;
-        state.token = {};
-        state.userData = {};
+        state.token = "";
+        state.userData = {} as UserData;
       })
       .addCase(logoutUser.rejected, (state) => {
         state.loading = false;
@@ -371,6 +368,5 @@ export const {
   restoreDefault,
   setResetPasswordStatus,
   setupdatePasswordStatus,
-  getAuthToken,
 } = authSlice.actions;
 export default authSlice.reducer;

@@ -3,14 +3,12 @@ import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
 import { storage } from "../../../../firebase";
 import { useAppDispatch, useAppSelector } from "../../../../app/hooks";
 import { InputField } from "../../../../components/Input";
-import { getAdminProfile } from "../../../../features/super/superSlice";
 import editUser from "../../../../assets/icons/user-edit.svg";
 
 const Profile = () => {
   const [photoProgress, setPhotoProgress] = useState(0);
   const [photoProgressComplete, setPhotoProgressComplete] = useState(false);
   const dispatch = useAppDispatch();
-  const profile = useAppSelector((state) => state?.super?.adminProfile);
 
   const handleFileUpload = async (
     event: React.ChangeEvent<HTMLInputElement>
@@ -42,14 +40,14 @@ const Profile = () => {
     );
   };
 
-  useEffect(() => {
-    dispatch(getAdminProfile());
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(getAdminProfile());
+  // }, [dispatch]);
 
-  console.log(profile);
-  if (!profile) {
-    return <div>Loading...</div>;
-  }
+  // console.log(profile);
+  // if (!profile) {
+  //   return <div>Loading...</div>;
+  // }
 
   return (
     <div className="relative max-w-full border rounded-xl bg-white">
@@ -73,7 +71,7 @@ const Profile = () => {
                 name="firstName"
                 type="text"
                 onChange={() => console.log("h")}
-                defaultValue={profile?.data?.firstName}
+                // defaultValue={profile?.data?.firstName}
                 required
                 classes="border outline-none py-3 px-4 shadow-none ring-0 focus:ring-0 ring-transparent active:bg-transparent border-[#eaeaed] rounded-[10px] pl-4 placeholder:font-normal placeholder:text-base placeholder:text-[#B9B8B8]"
               />
@@ -92,7 +90,7 @@ const Profile = () => {
                   type="text"
                   required
                   onChange={() => console.log("h")}
-                  defaultValue={profile?.data?.lastName}
+                  // defaultValue={profile?.data?.lastName}
                   classes="border outline-none py-3 px-4 shadow-none ring-0 focus:ring-0 ring-transparent active:bg-transparent border-[#eaeaed] rounded-[10px] pl-4 placeholder:font-normal placeholder:text-base placeholder:text-[#B9B8B8]"
                 />
               </div>
@@ -115,7 +113,7 @@ const Profile = () => {
               </div>
             </label>
             <label className="text-[#0E0E0E] text-[14px] font-[500] leading-[24px]">
-              {profile?.data?.firstName} {profile?.data?.lastName}
+              {/* {profile?.data?.firstName} {profile?.data?.lastName} */}
               <p className="leading-[24px] mr-0 text-[14px] font-[400] text-[#5C5C5B]">
                 super admin
               </p>

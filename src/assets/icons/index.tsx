@@ -62,7 +62,7 @@ export const SideBarDivider = () => {
     >
       <path
         d="M3.06043 11.2871L7.95043 6.39711C8.52793 5.81961 9.47293 5.81961 10.0504 6.39711L14.9404 11.2871"
-        stroke="#16CEAA"
+        stroke="#601A35"
         strokeWidth="1.5"
         strokeMiterlimit="10"
         strokeLinecap="round"

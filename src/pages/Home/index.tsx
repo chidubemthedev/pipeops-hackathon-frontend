@@ -13,14 +13,14 @@ const Home = () => {
   const token = authUser?.token;
 
   useEffect(() => {
-    if (!authUser.token.access) {
+    if (!authUser.token) {
       navigate("/login");
     }
   }, [authUser.token]);
 
   const logOutUser = async () => {
     const currentUser = {
-      refreshToken: token?.refresh?.token,
+      refreshToken: token,
     };
     dispatch(logoutUser(currentUser));
   };
