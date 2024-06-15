@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { useDispatch } from "react-redux";
-import { useNavigate, useSearchParams } from "react-router-dom";
+import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import { useAppSelector } from "../../app/hooks";
 import { AppDispatch } from "../../app/store";
 import { Button } from "../../components/Button";
@@ -122,7 +122,7 @@ const Login = () => {
                     <button
                       type="button"
                       onClick={() => setShowModal(true)}
-                      className="font-semibold text-primary hover:text-[#47aa96] w-fit"
+                      className="font-semibold text-primary hover:text-priamaryHover w-fit"
                     >
                       Forgot password?
                     </button>
@@ -143,12 +143,12 @@ const Login = () => {
 
             <p className="mt-10 text-center text-[16px] text-[#454545]">
               Don&apos;t have an account?{" "}
-              <a
-                href="/signup"
-                className="font-[500] leading-6 text-primary hover:text-[#47aa96]"
+              <Link
+                to={"/signup"}
+                className="font-[500] leading-6 text-primary hover:text-primaryHover"
               >
                 Create Account
-              </a>
+              </Link>
             </p>
           </div>
         </div>

@@ -12,13 +12,14 @@ module.exports = {
       },
       colors: {
         primary: "#601A35",
+        primaryHover: "#833a8c",
         generalBlack: "#0E0E0E",
         neutral: "#363636",
         neutral300: "#CFCFCF",
       },
       boxShadow: {
         loginHeaderShadow: "0px 12px 22px 0px rgba(0, 0, 0, 0.05)",
-        buttonShadow: "0px 26px 46px 0px rgba(22, 206, 170, 0.35)",
+        buttonShadow: "0px 4px 10px rgba(48, 10, 27, 0.5)",
         loginShadow: "0px -4px 10.6px 0px rgba(190, 190, 190, 0.25)",
         dropDownShadow: "0px 4px 19px 0px rgba(0, 0, 0, 0.25)",
       },

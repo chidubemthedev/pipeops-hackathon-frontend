@@ -1,31 +1,21 @@
 export type UserData = {
-  _id: string;
-  username: string;
   email: string;
-  _email: boolean;
-  firstName: string;
-  lastName: string;
-  dateOfBirth: string;
   phone: string;
   image: string;
   thumbnail: string;
-  role: string;
+  firstName: string;
+  lastName: string;
   stateOfOrigin: string;
   localGovtOfOrigin: string;
   stateOfResidence: string;
   localGovtOfResidence: string;
-  learningPath: string[];
-  totalPointsEarned: number;
-  enrolledCourses: number;
-  completedCourses: number;
+  address: string;
+  role: string;
+  isEmailVerified: boolean;
+  hasPasswordChanged: boolean;
   createdAt: string;
   updatedAt: string;
-  officerType: string;
-  officerData: {
-    language: string;
-    complementSkill: string;
-    technicalCapability: string;
-  };
+  _id: string;
 };
 
 export type UserList = UserData[];

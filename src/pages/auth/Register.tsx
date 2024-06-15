@@ -4,21 +4,8 @@ import { Button } from "../../components/Button";
 import { InputField } from "../../components/Input";
 import { registerUser } from "../../features/auth/authSlice";
 import AuthLayout from "../../layouts/AuthLayout";
-
-export type AllInputs = {
-  firstName: string;
-  lastName: string;
-  email: string;
-  businessName: string;
-  dateOfBirth: string;
-  phone: string;
-  password: string;
-  confirmpassword: string;
-  stateOfOrigin: string;
-  localGovtOfOrigin: string;
-  stateOfResidence: string;
-  localGovtOfResidence: string;
-};
+import { Link, useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 
 export type handleFormChangerType = (
   e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
@@ -26,23 +13,19 @@ export type handleFormChangerType = (
 
 const Signup = () => {
   const [passwordInputType, setPasswordInputType] = useState("password");
-  const [allInputs, setAllInputs] = useState<AllInputs>({
+  const authUser = useAppSelector((state) => state.auth);
+
+  const loading = authUser.loading;
+
+  const [allInputs, setAllInputs] = useState({
     firstName: "",
     lastName: "",
     email: "",
-    businessName: "",
-    dateOfBirth: "",
-    phone: "",
     password: "",
-    confirmpassword: "",
-    stateOfOrigin: "",
-    localGovtOfOrigin: "",
-    stateOfResidence: "",
-    localGovtOfResidence: "",
   });
 
   const dispatch = useAppDispatch();
-  const auth = useAppSelector((state) => state.auth);
+  const navigate = useNavigate();
 
   const handleFormChanger = (e: React.ChangeEvent<HTMLInputElement>) => {
     setAllInputs({ ...allInputs, [e.target.name]: e.target.value });
@@ -50,7 +33,13 @@ const Signup = () => {
 
   const handleFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    dispatch(registerUser(allInputs));
+    console.log(allInputs);
+    dispatch(registerUser(allInputs)).then((res) => {
+      if (res.meta.requestStatus === "fulfilled") {
+        toast.success("Account created successfully");
+        navigate("/login");
+      }
+    });
   };
 
   const handlePasswordToggle = () => {
@@ -59,22 +48,63 @@ const Signup = () => {
 
   return (
     <div>
-      <header className="px-4 py-6 border-b border-gray-200 sm:px-6 shadow-[0_12px_22px_0_rgba(0,0,0,0.05)]">
-        <h1 className="text-3xl leading-6 font-bold text-[#16CEAA] font-opensans">
-          Vinance Register
+      <div className="bg-white shadow-loginHeaderShadow fixed w-[100%]">
+        <h1 className="py-[20px] px-[45px] text-primary text-center text-[30px] font-[700]">
+          VINANCE
         </h1>
-      </header>
+      </div>
+
       <AuthLayout>
-        <div className="py-8 px-4 overflow-hidden sm:px-6 lg:px-8 lg:py-10">
-          <div className="text-center">
-            <h2 className="text-[38px] font-medium tracking-tight text-gray-900 sm:text-4xl font-gtwalsheimpro">
-              Create Account
+        <div className="flex flex-col bg-white mt-[100px] shadow-loginShadow rounded-[10px] px-[20px] py-[30px] h-fit">
+          <div className="mb-[42px]">
+            <h2 className="ml-[20px] text-[30px] font-[500] tracking-[0.5px] text-generalBlack">
+              Create your account
             </h2>
+            <div className="bg-[#E8EAED] h-[1px] w-full mt-[16px]" />
           </div>
-          <div className="relative max-w-5xl mx-auto border rounded-xl bg-white shadow-[0_-4px_10.600000381469727px_0_rgba(190,190,190,0.25)]">
+          <div className="w-full p-6 relative max-w-5xl mx-auto border rounded-xl bg-white shadow-[0_-4px_10.600000381469727px_0_rgba(190,190,190,0.25)]">
             <form onSubmit={handleFormSubmit}>
-              <div className="space-y-[20px]">
+              <div className="grid md:grid-cols-2 gap-2">
                 <div>
+                  <label
+                    htmlFor="firstname"
+                    className="block text-sm font-medium leading-6 tracking-[0.28px] text-neutral"
+                  >
+                    First Name
+                  </label>
+                  <div className="mt-2">
+                    <InputField
+                      id="firstname"
+                      name="firstName"
+                      type="text"
+                      placeholder="John"
+                      classes="h-[56px] rounded-[12px] px-[16px] border border-[#E8EAED]"
+                      onChange={handleFormChanger}
+                      required
+                    />
+                  </div>
+                </div>
+                <div>
+                  <label
+                    htmlFor="lastname"
+                    className="block text-sm font-medium leading-6 tracking-[0.28px] text-neutral"
+                  >
+                    Last Name
+                  </label>
+                  <div className="mt-2">
+                    <InputField
+                      id="lastname"
+                      name="lastName"
+                      type="text"
+                      placeholder="Doe"
+                      classes="h-[56px] rounded-[12px] px-[16px] border border-[#E8EAED]"
+                      onChange={handleFormChanger}
+                      required
+                    />
+                  </div>
+                </div>
+
+                <div className="mt-4">
                   <label
                     htmlFor="email"
                     className="block text-sm font-medium leading-6 tracking-[0.28px] text-neutral"
@@ -86,7 +116,7 @@ const Signup = () => {
                       id="email"
                       name="email"
                       type="email"
-                      placeholder="e.g oyindamola@gmail.com"
+                      placeholder="e.g example@gmail.com"
                       classes="h-[56px] rounded-[12px] px-[16px] border border-[#E8EAED]"
                       onChange={handleFormChanger}
                       required
@@ -94,7 +124,7 @@ const Signup = () => {
                   </div>
                 </div>
 
-                <div>
+                <div className="mt-4">
                   <div className="flex items-center justify-between">
                     <label
                       htmlFor="password"
@@ -117,18 +147,33 @@ const Signup = () => {
                     />
                   </div>
                 </div>
+              </div>
 
-                <div className="mt-4">
-                  <Button
-                    loading={auth.loading}
-                    className="shadow-buttonShadow"
-                    name="Log in"
-                    type="submit"
-                    disabled={!allInputs.email || !allInputs.password}
-                  />
-                </div>
+              <div className="mt-8 flex items-center justify-center">
+                <Button
+                  loading={loading}
+                  className="shadow-buttonShadow max-w-[400px]"
+                  name="Create Account"
+                  type="submit"
+                  disabled={
+                    !allInputs.email ||
+                    !allInputs.password ||
+                    !allInputs.firstName ||
+                    !allInputs.lastName
+                  }
+                />
               </div>
             </form>
+
+            <p className="mt-10 text-center text-[16px] text-[#454545]">
+              Have an account?{" "}
+              <Link
+                to={"/login"}
+                className="font-[500] leading-6 text-primary hover:text-primaryHover"
+              >
+                Login
+              </Link>
+            </p>
           </div>
         </div>
       </AuthLayout>

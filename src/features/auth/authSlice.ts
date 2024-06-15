@@ -2,12 +2,11 @@ import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { getSimplifiedError } from "../../util";
 import { APIService } from "../../util/APIService";
 import { url } from "../../util/endpoints";
-
-import { stat } from "fs";
+import { UserData } from "../../util/types";
 export interface AuthState {
   loading: boolean;
-  userData: any;
-  token: any;
+  userData: UserData;
+  token: string;
   activeUser: boolean;
   verifiedStatus: boolean;
   registerSuccess: boolean;
@@ -23,8 +22,8 @@ export interface AuthState {
 
 const initialState: AuthState = {
   loading: false,
-  userData: {},
-  token: {},
+  userData: {} as UserData,
+  token: "",
   activeUser: false,
   verifiedStatus: false,
   registerSuccess: false,
@@ -96,9 +95,6 @@ export const authSlice = createSlice({
         state.userData = payload.user;
         state.token = payload.token;
         state.activeUser = true;
-
-        //set a cookie for the extension
-        document.cookie = `ttk=${payload.token}; path=/;`;
       })
       .addCase(loginUser.rejected, (state) => {
         state.loading = false;
@@ -204,8 +200,6 @@ export const registerUser = createAsyncThunk(
   "registerUser",
   async (payload: any, { rejectWithValue }) => {
     try {
-      payload = { ...payload, ["phone"]: "+234".concat(payload?.phone) };
-
       const { data } = await APIService.post(`${url?.register}`, payload);
       return data;
     } catch (error: any) {
