@@ -16,10 +16,10 @@ const Header = () => {
         </div>
 
         <Link
-          to={"/invitations/send-invite"}
+          to={"/orders/create"}
           className="text-white text-sm font-medium bg-primary rounded-[30px] p-[10px] h-[55px] w-[200px] flex items-center justify-center"
         >
-          Invite a Business
+          Create Order
         </Link>
       </div>
     </div>

@@ -73,7 +73,7 @@ const ItemInput = () => {
   return (
     <div className="container">
       <form onSubmit={handleSubmit}>
-        <div className="grid grid-cols-1 gap-y-6 sm:grid-cols-3 sm:gap-8 border rounded-xl bg-white shadow-[0_-4px_10.600000381469727px_0_rgba(190,190,190,0.25)] mb-2 px-4 pt-2 pb-4">
+        <div className="grid grid-cols-1 gap-y-6 sm:grid-cols-3 sm:gap-8 border rounded-xl bg-white shadow-[0_-4px_10.600000381469727px_0_rgba(190,190,190,0.25)] mb-2 px-4 pt-3 pb-4">
           <div>
             <label
               htmlFor="customerEmail"
@@ -132,7 +132,7 @@ const ItemInput = () => {
         {customerDetails.itemOrdered.map((item, index) => (
           <div
             key={index}
-            className="grid grid-cols-1 gap-y-6 sm:grid-cols-3 sm:gap-8 border rounded-xl bg-white shadow-[0_-4px_10.600000381469727px_0_rgba(190,190,190,0.25)] mb-2 px-4 pt-2 pb-4"
+            className="grid grid-cols-1 gap-y-6 sm:grid-cols-3 sm:gap-8 border rounded-xl bg-white shadow-[0_-4px_10.600000381469727px_0_rgba(190,190,190,0.25)] mb-2 px-4 pt-3 pb-4"
           >
             <div>
               <label htmlFor={`item${index}`}>Item Name</label>
