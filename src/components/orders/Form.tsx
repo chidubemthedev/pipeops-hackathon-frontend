@@ -1,8 +1,16 @@
 import React, { useState } from "react";
 import { Button } from "../Button";
+import { InputField } from "../Input";
 
 const ItemInput = () => {
   const [items, setItems] = useState([{ item: "", total: "" }]);
+  const [customerDetails, setCustomerDetails] = useState({
+    customerPhone: "",
+    customerEmail: "",
+    customerAddress: "",
+    totalAmount: "",
+    itemOrdered: items,
+  });
 
   const addItem = () => {
     setItems([...items, { item: "", total: "" }]);
@@ -22,12 +30,68 @@ const ItemInput = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(items);
+    console.log(customerDetails);
   };
 
   return (
     <div className="container">
       <form onSubmit={handleSubmit}>
+        <div className="grid grid-cols-1 gap-y-6 sm:grid-cols-3 sm:gap-8 border rounded-xl bg-white shadow-[0_-4px_10.600000381469727px_0_rgba(190,190,190,0.25)] mb-2 px-4 pt-2 pb-4">
+          <div>
+            <label
+              htmlFor="customerEmail"
+              className="block text-sm font-medium leading-6 tracking-[0.28px] text-neutral"
+            >
+              Customer Email
+            </label>
+            <InputField
+              required
+              id="customerEmail"
+              name="customerEmail"
+              type="email"
+              placeholder="e.g example@gmail.com"
+              classes="h-[56px] rounded-[12px] px-[16px] border border-[#E8EAED]"
+              onChange={(e) => console.log("email")}
+            />
+          </div>
+
+          <div>
+            <label
+              htmlFor="customerPhone"
+              className="block text-sm font-medium leading-6 tracking-[0.28px] text-neutral"
+            >
+              Customer Phone Number
+            </label>
+            <InputField
+              required
+              id="customerPhone"
+              name="customerPhone"
+              type="tel"
+              placeholder="e.g 08013456789"
+              classes="h-[56px] rounded-[12px] px-[16px] border border-[#E8EAED]"
+              onChange={(e) => console.log("phone")}
+            />
+          </div>
+
+          <div>
+            <label
+              htmlFor="customerAddress"
+              className="block text-sm font-medium leading-6 tracking-[0.28px] text-neutral"
+            >
+              Customer Address
+            </label>
+            <InputField
+              required
+              id="customerAddress"
+              name="customerAddress"
+              type="text"
+              placeholder="e.g Lagos, Nigeria"
+              classes="h-[56px] rounded-[12px] px-[16px] border border-[#E8EAED]"
+              onChange={(e) => console.log("phone")}
+            />
+          </div>
+        </div>
+
         {items.map((item, index) => (
           <div
             key={index}
