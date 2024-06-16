@@ -100,7 +100,7 @@ export const appNavs = [
     children: [
       {
         name: "Create Order",
-        link: "/create-order",
+        link: "/orders/create",
         roles: ["USER"],
       },
       {

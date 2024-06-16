@@ -1,5 +1,6 @@
 import ProtectedRoute from "../../../ProtectedRoute";
 import UserDashboard from "../dashboard";
+import CreateOrder from "../orders/create";
 import UserSettings from "../settings";
 
 const UserRoutes = [
@@ -12,7 +13,14 @@ const UserRoutes = [
     ),
     title: "Home",
   },
-
+  {
+    path: "/orders/create",
+    element: (
+      <ProtectedRoute>
+        <CreateOrder />
+      </ProtectedRoute>
+    ),
+  },
   {
     path: "/settings",
     element: (
