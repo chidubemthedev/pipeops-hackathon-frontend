@@ -2,12 +2,14 @@ import React, { useEffect, useState } from "react";
 import { Button } from "../Button";
 import { InputField } from "../Input";
 
+type ItemKeys = "item" | "total";
+
 const ItemInput = () => {
   const [customerDetails, setCustomerDetails] = useState({
     customerPhone: "",
     customerEmail: "",
     customerAddress: "",
-    totalAmount: "",
+    totalAmount: 0,
     itemOrdered: [{ item: "", total: "" }],
   });
 
@@ -31,16 +33,21 @@ const ItemInput = () => {
     });
   };
 
-  const handleInputChange = (index: number, event) => {
+  const handleInputChange = (
+    index: number,
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
     const values = [...customerDetails.itemOrdered];
-    values[index][event.target.name] = event.target.value;
+    values[index][event.target.name as ItemKeys] = event.target.value;
     setCustomerDetails({
       ...customerDetails,
       itemOrdered: values,
     });
   };
 
-  const handleCustomerDetailsChange = (event) => {
+  const handleCustomerDetailsChange = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
     setCustomerDetails({
       ...customerDetails,
       [event.target.name]: event.target.value,
@@ -58,7 +65,7 @@ const ItemInput = () => {
     }));
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     console.log(customerDetails);
   };
