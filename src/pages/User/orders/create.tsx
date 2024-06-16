@@ -6,8 +6,8 @@ const CreateOrder = () => {
   return (
     <DashboardLayout>
       <Header />
+      <h1 className="mt-10 mb-4">Create an order</h1>
       <Form />
-      <p>CreateOrder form here</p>
     </DashboardLayout>
   );
 };
