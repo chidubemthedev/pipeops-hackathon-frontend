@@ -1,31 +1,61 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Button } from "../Button";
 import { InputField } from "../Input";
 
 const ItemInput = () => {
-  const [items, setItems] = useState([{ item: "", total: "" }]);
   const [customerDetails, setCustomerDetails] = useState({
     customerPhone: "",
     customerEmail: "",
     customerAddress: "",
     totalAmount: "",
-    itemOrdered: items,
+    itemOrdered: [{ item: "", total: "" }],
   });
 
+  useEffect(() => {
+    calculateTotalAmount();
+  }, [customerDetails.itemOrdered]);
+
   const addItem = () => {
-    setItems([...items, { item: "", total: "" }]);
+    setCustomerDetails({
+      ...customerDetails,
+      itemOrdered: [...customerDetails.itemOrdered, { item: "", total: "" }],
+    });
   };
 
   const removeItem = (index: number) => {
-    const values = [...items];
+    const values = [...customerDetails.itemOrdered];
     values.splice(index, 1);
-    setItems(values);
+    setCustomerDetails({
+      ...customerDetails,
+      itemOrdered: values,
+    });
   };
 
   const handleInputChange = (index: number, event) => {
-    const values = [...items];
+    const values = [...customerDetails.itemOrdered];
     values[index][event.target.name] = event.target.value;
-    setItems(values);
+    setCustomerDetails({
+      ...customerDetails,
+      itemOrdered: values,
+    });
+  };
+
+  const handleCustomerDetailsChange = (event) => {
+    setCustomerDetails({
+      ...customerDetails,
+      [event.target.name]: event.target.value,
+    });
+  };
+
+  const calculateTotalAmount = () => {
+    const totalAmount = customerDetails.itemOrdered.reduce((sum, item) => {
+      const price = parseFloat(item.total);
+      return sum + (isNaN(price) ? 0 : price);
+    }, 0);
+    setCustomerDetails((prevState) => ({
+      ...prevState,
+      totalAmount,
+    }));
   };
 
   const handleSubmit = (event) => {
@@ -51,7 +81,7 @@ const ItemInput = () => {
               type="email"
               placeholder="e.g example@gmail.com"
               classes="h-[56px] rounded-[12px] px-[16px] border border-[#E8EAED]"
-              onChange={(e) => console.log("email")}
+              onChange={handleCustomerDetailsChange}
             />
           </div>
 
@@ -69,7 +99,7 @@ const ItemInput = () => {
               type="tel"
               placeholder="e.g 08013456789"
               classes="h-[56px] rounded-[12px] px-[16px] border border-[#E8EAED]"
-              onChange={(e) => console.log("phone")}
+              onChange={handleCustomerDetailsChange}
             />
           </div>
 
@@ -87,22 +117,22 @@ const ItemInput = () => {
               type="text"
               placeholder="e.g Lagos, Nigeria"
               classes="h-[56px] rounded-[12px] px-[16px] border border-[#E8EAED]"
-              onChange={(e) => console.log("phone")}
+              onChange={handleCustomerDetailsChange}
             />
           </div>
         </div>
 
-        {items.map((item, index) => (
+        {customerDetails.itemOrdered.map((item, index) => (
           <div
             key={index}
             className="grid grid-cols-1 gap-y-6 sm:grid-cols-3 sm:gap-8 border rounded-xl bg-white shadow-[0_-4px_10.600000381469727px_0_rgba(190,190,190,0.25)] mb-2 px-4 pt-2 pb-4"
           >
             <div>
-              <label htmlFor={`name${index}`}>Item Name</label>
+              <label htmlFor={`item${index}`}>Item Name</label>
               <input
                 type="text"
-                id={`name${index}`}
-                name="name"
+                id={`item${index}`}
+                name="item"
                 value={item.item}
                 onChange={(event) => handleInputChange(index, event)}
                 placeholder="Enter item name"
@@ -110,11 +140,11 @@ const ItemInput = () => {
               />
             </div>
             <div>
-              <label htmlFor={`price${index}`}>Price</label>
+              <label htmlFor={`total${index}`}>Price</label>
               <input
                 type="number"
                 id={`price${index}`}
-                name="price"
+                name="total"
                 value={item.total}
                 onChange={(event) => handleInputChange(index, event)}
                 placeholder="Enter price (In Naira)"
