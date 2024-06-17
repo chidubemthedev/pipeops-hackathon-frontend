@@ -3,9 +3,13 @@ import Modal from "../../../components/Modal";
 import Form from "../../../components/orders/Form";
 import Header from "../../../components/orders/Header";
 import DashboardLayout from "../../../layouts/DashboardLayout";
+import Instagram from "../../../assets/images/Instagram.png";
+import Facebook from "../../../assets/images/facebook.svg";
+import Linkedin from "../../../assets/images/linkedin.png";
+import Twitter from "../../../assets/images/twitter.png";
 
 const CreateOrder = () => {
-  const [linkModal, setLinkModal] = useState(false);
+  const [linkModal, setLinkModal] = useState(true);
 
   return (
     <DashboardLayout>
@@ -18,7 +22,7 @@ const CreateOrder = () => {
           closeModal={() => setLinkModal(false)}
           onConfirm={() => setLinkModal(false)}
           showfooter={false}
-          showCloseIcon={false}
+          showCloseIcon={true}
         >
           \
           <div key="body" className="my-6">
@@ -34,31 +38,25 @@ const CreateOrder = () => {
                   required
                   className="outline-none py-3 px-4 block w-full border border-[#e3e3e2] rounded-[16px] pl-4 placeholder:font-normal text-generalBlack"
                 />
-                <button className="absolute top-[10%] right-2.5 bg-primary font-gtwaalsheimpro rounded-xl text-white text-sm font-medium p-2.5 w-[auto]">
+                <button className="absolute top-[10%] right-2.5 bg-primary font-gtwaalsheimpro rounded-xl text-white text-sm font-medium p-2.5 w-[auto] hover:cursor-pointer">
                   Copy
                 </button>
               </div>
             </div>
             <div className="flex items-center mt-4">
-              <div className="border p-2.5 border-generalBlack rounded-2xl">
-                F{/* <img src={Facebook} alt="" /> */}
+              <div className="border p-2.5 border-generalBlack rounded-2xl hover:cursor-pointer">
+                <img src={Facebook} alt="" />
               </div>
-              <div className="border p-2.5 border-generalBlack rounded-2xl mx-6">
-                T{/* <img src={Twitter} alt="" /> */}
+              <div className="border p-2.5 border-generalBlack rounded-2xl mx-6 hover:cursor-pointer">
+                <img src={Twitter} alt="" />
               </div>
-              <div className="border p-2.5 border-generalBlack rounded-2xl">
-                L{/* <img src={Linkedin} alt="" /> */}
+              <div className="border p-2.5 border-generalBlack rounded-2xl hover:cursor-pointer">
+                <img src={Linkedin} alt="" />
               </div>
-              <div className="border p-2.5 border-generalBlack rounded-2xl ml-6">
-                I{/* <img src={Instagram} alt="" /> */}
+              <div className="border p-2.5 border-generalBlack rounded-2xl ml-6 hover:cursor-pointer">
+                <img src={Instagram} alt="" />
               </div>
             </div>
-            <button
-              // onClick={() => navigate("/leagues/discover")}
-              className="w-full mt-12 bg-primary  text-white py-3 rounded-[50px] text-base cursor-pointer"
-            >
-              Cancel
-            </button>
           </div>
         </Modal>
       )}

@@ -8,6 +8,7 @@ import { useAppSelector } from "./app/hooks";
 import NotFound from "./pages/Error/NotFound";
 import SuperAdminRoutes from "./pages/SuperAdmin/routes";
 import UserRoutes from "./pages/User/routes";
+import PaymentPage from "./pages/payment";
 
 const baseRoutes = [
   {
@@ -19,6 +20,10 @@ const baseRoutes = [
     path: "/signup",
     element: <Signup />,
     title: "Signup",
+  },
+  {
+    path: "/orders/:id",
+    element: <PaymentPage />,
   },
   {
     path: "*",

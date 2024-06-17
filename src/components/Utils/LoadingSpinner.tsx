@@ -1,9 +1,13 @@
-export const LoadingSpinner = () => {
+type Props = {
+  width?: string;
+  height?: string;
+};
+export const LoadingSpinner = ({ width, height }: Props) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width="22"
-      height="24"
+      width={width || "22"}
+      height={height || "24"}
       viewBox="0 0 24 24"
     >
       <path
