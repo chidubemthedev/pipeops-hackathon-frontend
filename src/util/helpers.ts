@@ -85,7 +85,7 @@ export const filterByDateRange = (data: any, fromDate: any, toDate: any) => {
 export const appNavs = [
   {
     name: "Dashboard",
-    link: "/dashboard",
+    link: "/",
     icon: "/icons/home-inactive.svg",
     activeIcon: "/icons/home-active.svg",
     roles: ["SUPER", "USER"],

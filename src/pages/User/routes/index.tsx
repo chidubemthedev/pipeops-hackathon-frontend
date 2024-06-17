@@ -5,7 +5,7 @@ import UserSettings from "../settings";
 
 const UserRoutes = [
   {
-    path: "/dashboard",
+    path: "/",
     element: (
       <ProtectedRoute>
         <UserDashboard />
