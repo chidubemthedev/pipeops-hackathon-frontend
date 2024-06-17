@@ -187,7 +187,7 @@ const ItemInput = () => {
           </div>
         ))}
 
-        <div className="flex gap-2 mt-[24px] items-center">
+        <div className="flex gap-2 mt-[24px] items-center h-[52px]">
           <div
             onClick={() =>
               setCustomerDetails({
