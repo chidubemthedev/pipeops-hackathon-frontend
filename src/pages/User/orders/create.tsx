@@ -1,26 +1,32 @@
-import { useState } from "react";
-import Modal from "../../../components/Modal";
-import Form from "../../../components/orders/Form";
-import Header from "../../../components/orders/Header";
-import DashboardLayout from "../../../layouts/DashboardLayout";
+import { useAppDispatch, useAppSelector } from "../../../app/hooks";
 import Instagram from "../../../assets/images/Instagram.png";
 import Facebook from "../../../assets/images/facebook.svg";
 import Linkedin from "../../../assets/images/linkedin.png";
 import Twitter from "../../../assets/images/twitter.png";
+import Modal from "../../../components/Modal";
+import Form from "../../../components/orders/Form";
+import Header from "../../../components/orders/Header";
+import { clearState } from "../../../features/orders/orderSlice";
+import DashboardLayout from "../../../layouts/DashboardLayout";
 
 const CreateOrder = () => {
-  const [linkModal, setLinkModal] = useState(true);
+  const responseUrl = useAppSelector((state) => state.order.responseUrl);
+  const dispatch = useAppDispatch();
+
+  const restoreDefault = () => {
+    dispatch(clearState());
+  };
 
   return (
     <DashboardLayout>
       <Header />
       <h1 className="mt-10 mb-4">Create an order</h1>
       <Form />
-      {linkModal && (
+      {responseUrl && responseUrl?.length > 0 && (
         <Modal
           showHeader={false}
-          closeModal={() => setLinkModal(false)}
-          onConfirm={() => setLinkModal(false)}
+          closeModal={restoreDefault}
+          onConfirm={restoreDefault}
           showfooter={false}
           showCloseIcon={true}
         >
@@ -34,6 +40,7 @@ const CreateOrder = () => {
                   id="name"
                   name="name"
                   type="text"
+                  value={responseUrl}
                   required
                   className="outline-none py-3 px-4 block w-full border border-[#e3e3e2] rounded-[16px] pl-4 placeholder:font-normal text-generalBlack"
                 />

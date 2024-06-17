@@ -16,7 +16,7 @@ const ItemInput = () => {
     totalAmount: 0,
     itemOrdered: [{ item: "", total: "" }],
   });
-  const [responseUrl, setResponseUrl] = useState("");
+  // const [responseUrl, setResponseUrl] = useState("");
   const dispatch = useAppDispatch();
 
   useEffect(() => {
@@ -84,7 +84,7 @@ const ItemInput = () => {
     console.log(customerDetails);
     dispatch(generateOrder(customerDetails)).then((res) => {
       console.log(res);
-      setResponseUrl(res.payload?.data.generatedUrl);
+      // setResponseUrl(res.payload?.data.generatedUrl);
     });
   };
 

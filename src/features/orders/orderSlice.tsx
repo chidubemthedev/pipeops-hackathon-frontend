@@ -5,10 +5,12 @@ import { url } from "../../util/endpoints";
 
 export interface OrderState {
   loading: boolean;
+  responseUrl?: string;
 }
 
 const initialState: OrderState = {
   loading: false,
+  responseUrl: "",
 };
 
 export const orderSlice = createSlice({
@@ -24,8 +26,9 @@ export const orderSlice = createSlice({
       .addCase(generateOrder.pending, (state) => {
         state.loading = true;
       })
-      .addCase(generateOrder.fulfilled, (state) => {
+      .addCase(generateOrder.fulfilled, (state, { payload }) => {
         state.loading = false;
+        state.responseUrl = payload.data.generatedUrl;
       })
       .addCase(generateOrder.rejected, (state) => {
         state.loading = false;
