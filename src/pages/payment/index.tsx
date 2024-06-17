@@ -1,19 +1,24 @@
 import { useParams } from "react-router-dom";
 import Header from "../../components/payments/Header";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import { checkPaymenCode } from "../../features/orders/orderSlice";
 import { LoadingSpinner } from "../../components/Utils/LoadingSpinner";
+import Modal from "../../components/Modal";
 
 const PaymentPage = () => {
   const { id } = useParams();
   const dispatch = useAppDispatch();
   const loading = useAppSelector((state) => state.order.loading);
+  const [detailsModal, setDetailsModal] = useState(true);
+  const [responseMessage, setResponseMessage] = useState(
+    "Your payment was successful"
+  );
 
   console.log(id);
 
   // useEffect(() => {
-  //   dispatch(checkPaymenCode(id));
+  //   dispatch(checkPaymenCode({ code: id }));
   // });
 
   return (
@@ -29,6 +34,22 @@ const PaymentPage = () => {
           </div>
         )}
       </div>
+
+      {detailsModal && (
+        <Modal
+          showHeader={false}
+          closeModal={() => setDetailsModal(false)}
+          onConfirm={() => setDetailsModal(false)}
+          showfooter={false}
+          showCloseIcon={true}
+          showCloseButton={true}
+          closeButtonLabel="Close"
+        >
+          <div key="body" className="my-6">
+            <p>{responseMessage}</p>
+          </div>
+        </Modal>
+      )}
     </div>
   );
 };

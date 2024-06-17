@@ -24,7 +24,6 @@ const CreateOrder = () => {
           showfooter={false}
           showCloseIcon={true}
         >
-          \
           <div key="body" className="my-6">
             <div>
               <h3 className="font-medium text-[calc(10px_+_10px)]  text-generalBlack">
