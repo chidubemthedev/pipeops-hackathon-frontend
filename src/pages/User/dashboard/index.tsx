@@ -3,6 +3,7 @@ import { useAppSelector } from "../../../app/hooks";
 import Header from "../../../components/dashboard/Header";
 import DashboardLayout from "../../../layouts/DashboardLayout";
 import { useEffect } from "react";
+import Overview from "../../../components/dashboard/Overview";
 
 const UserDashboard = () => {
   const authUser = useAppSelector((state) => state.auth);
@@ -22,7 +23,7 @@ const UserDashboard = () => {
   return (
     <DashboardLayout>
       <Header />
-      <div>User dashboard</div>
+      <Overview />
     </DashboardLayout>
   );
 };
