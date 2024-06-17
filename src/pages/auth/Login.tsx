@@ -88,7 +88,7 @@ const Login = () => {
                       id="email"
                       name="email"
                       type="email"
-                      placeholder="e.g oyindamola@gmail.com"
+                      placeholder="e.g example@gmail.com"
                       classes="h-[56px] rounded-[12px] px-[16px] border border-[#E8EAED]"
                       onChange={handleFormChanger}
                       required
