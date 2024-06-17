@@ -9,6 +9,8 @@ import NotFound from "./pages/Error/NotFound";
 import SuperAdminRoutes from "./pages/SuperAdmin/routes";
 import UserRoutes from "./pages/User/routes";
 import PaymentPage from "./pages/payment";
+import ProtectedRoute from "./ProtectedRoute";
+import UserDashboard from "./pages/User/dashboard";
 
 const baseRoutes = [
   {
@@ -20,6 +22,15 @@ const baseRoutes = [
     path: "/signup",
     element: <Signup />,
     title: "Signup",
+  },
+  {
+    path: "/",
+    element: (
+      <ProtectedRoute>
+        <UserDashboard />
+      </ProtectedRoute>
+    ),
+    title: "Home",
   },
   {
     path: "/orders/:id",
