@@ -29,6 +29,15 @@ export const orderSlice = createSlice({
       })
       .addCase(generateOrder.rejected, (state) => {
         state.loading = false;
+      })
+      .addCase(checkPaymenCode.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(checkPaymenCode.fulfilled, (state) => {
+        state.loading = false;
+      })
+      .addCase(checkPaymenCode.rejected, (state) => {
+        state.loading = false;
       });
   },
 });
@@ -38,6 +47,23 @@ export const generateOrder = createAsyncThunk(
   async (payload: any, { rejectWithValue }) => {
     try {
       const { data } = await APIService.post(`${url.generateOrder}`, payload);
+      return data;
+    } catch (error: any) {
+      return rejectWithValue(
+        getSimplifiedError(error.response ? error : error)
+      );
+    }
+  }
+);
+
+export const checkPaymenCode = createAsyncThunk(
+  "checkPaymenCode",
+  async (payload: any, { rejectWithValue }) => {
+    try {
+      const { data } = await APIService.post(
+        `${url.checkPaymentCode}`,
+        payload
+      );
       return data;
     } catch (error: any) {
       return rejectWithValue(

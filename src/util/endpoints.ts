@@ -20,4 +20,5 @@ export const url = {
 
   //orders
   generateOrder: "/order/generate-url",
+  checkPaymentCode: "/order/check-code",
 };

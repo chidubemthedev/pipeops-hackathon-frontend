@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Button } from "../Button";
 import { InputField } from "../Input";
+import { useAppDispatch } from "../../app/hooks";
+import { generateOrder } from "../../features/orders/orderSlice";
 
 type ItemKeys = "item" | "total";
 
@@ -12,6 +14,7 @@ const ItemInput = () => {
     totalAmount: 0,
     itemOrdered: [{ item: "", total: "" }],
   });
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
     calculateTotalAmount();
@@ -68,6 +71,9 @@ const ItemInput = () => {
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     console.log(customerDetails);
+    dispatch(generateOrder(customerDetails)).then((res) => {
+      console.log(res);
+    });
   };
 
   return (
