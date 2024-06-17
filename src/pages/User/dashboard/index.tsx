@@ -8,14 +8,10 @@ import Overview from "../../../components/dashboard/Overview";
 const UserDashboard = () => {
   const authUser = useAppSelector((state) => state.auth);
   const navigate = useNavigate();
-  // const token = authUser?.token;
-
-  console.log("ddd");
 
   useEffect(() => {
     console.log(authUser.token);
     if (!authUser.token) {
-      console.log("no token found");
       navigate("/login");
     }
   }, [authUser.token]);
