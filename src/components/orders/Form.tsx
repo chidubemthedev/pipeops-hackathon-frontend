@@ -11,6 +11,8 @@ const ItemInput = () => {
     customerPhone: "",
     customerEmail: "",
     customerAddress: "",
+    paidDelivery: false,
+    deliveryAmount: 0,
     totalAmount: 0,
     itemOrdered: [{ item: "", total: "" }],
   });
@@ -18,7 +20,11 @@ const ItemInput = () => {
 
   useEffect(() => {
     calculateTotalAmount();
-  }, [customerDetails.itemOrdered]);
+  }, [
+    customerDetails.itemOrdered,
+    customerDetails.deliveryAmount,
+    customerDetails.paidDelivery,
+  ]);
 
   const addItem = () => {
     setCustomerDetails({
@@ -51,17 +57,21 @@ const ItemInput = () => {
   const handleCustomerDetailsChange = (
     event: React.ChangeEvent<HTMLInputElement>
   ) => {
+    const { name, value } = event.target;
     setCustomerDetails({
       ...customerDetails,
-      [event.target.name]: event.target.value,
+      [name]: name === "deliveryAmount" ? parseFloat(value) : value,
     });
   };
 
   const calculateTotalAmount = () => {
-    const totalAmount = customerDetails.itemOrdered.reduce((sum, item) => {
+    const totalItemAmount = customerDetails.itemOrdered.reduce((sum, item) => {
       const price = parseFloat(item.total);
       return sum + (isNaN(price) ? 0 : price);
     }, 0);
+    const totalAmount =
+      totalItemAmount +
+      (customerDetails.paidDelivery ? customerDetails.deliveryAmount : 0);
     setCustomerDetails((prevState) => ({
       ...prevState,
       totalAmount,
@@ -71,9 +81,9 @@ const ItemInput = () => {
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     console.log(customerDetails);
-    dispatch(generateOrder(customerDetails)).then((res) => {
-      console.log(res);
-    });
+    // dispatch(generateOrder(customerDetails)).then((res) => {
+    //   console.log(res);
+    // });
   };
 
   return (
@@ -176,6 +186,48 @@ const ItemInput = () => {
             </div>
           </div>
         ))}
+
+        <div className="flex gap-2 mt-[24px] items-center">
+          <div
+            onClick={() =>
+              setCustomerDetails({
+                ...customerDetails,
+                paidDelivery: !customerDetails.paidDelivery,
+              })
+            }
+            className={`
+        ${customerDetails.paidDelivery ? "bg-primary" : "bg-[#78788029]"}
+        relative inline-flex flex-shrink-0 h-6 w-11 border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none
+      `}
+          >
+            <span className="sr-only">Include Delivery Fee</span>
+            <span
+              aria-hidden="true"
+              className={`
+          ${customerDetails.paidDelivery ? "translate-x-5" : "translate-x-0"}
+          pointer-events-none inline-block h-5 w-5 rounded-full bg-white shadow transform ring-0 transition ease-in-out duration-200
+        `}
+            />
+          </div>
+          <div>
+            <p className="text-base font-[500] text-[#0E0E0E] text-nowrap">
+              Include Delivery Fee
+            </p>
+          </div>
+
+          {customerDetails.paidDelivery && (
+            <InputField
+              required={false}
+              id="deliveryAmount"
+              name="deliveryAmount"
+              type="num"
+              placeholder="e.g 2500"
+              classes="h-[56px] rounded-[12px] px-[16px] border border-[#E8EAED] max-w-[200px]"
+              onChange={handleCustomerDetailsChange}
+            />
+          )}
+        </div>
+
         <div className="flex gap-[20px] items-center justify-end mt-[50px]">
           <Button
             name="Add Another Item"
