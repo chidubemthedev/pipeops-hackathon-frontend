@@ -17,4 +17,7 @@ export const url = {
   validateResetPasswordOtp: "/authentication/forgot/validate",
   resetPassword: "/authentication/forgot/new/password",
   updatePassword: (query: string) => `/auth/reset-password?token=${query}`,
+
+  //orders
+  generateOrder: "/order/generate-url",
 };
