@@ -16,10 +16,12 @@ import {
 } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 import authReducer from "../features/auth/authSlice";
+import orderReducer from "../features/orders/orderSlice";
 import { APIService } from "../util/APIService";
 
 const rootReducer = combineReducers({
   auth: authReducer,
+  order: orderReducer,
 });
 
 const persistConfig = {
