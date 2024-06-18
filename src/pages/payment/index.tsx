@@ -26,12 +26,12 @@ const PaymentPage = () => {
   return (
     <div>
       <Header />
-      <div className="flex justify-center items-center min-h-screen">
+      <div className="flex justify-center items-center min-h-screen px-4">
         {loading ? (
           <LoadingSpinner width="88" height="96" />
         ) : (
           <div className="flex justify-center items-center gap-2">
-            <h1>Automatically redirecting to secure payment page...</h1>
+            <h1>Redirecting to secure payment page...</h1>
             <LoadingSpinner />
           </div>
         )}

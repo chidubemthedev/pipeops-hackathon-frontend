@@ -1,9 +1,7 @@
-import React from "react";
-
 const Footer = () => {
   return (
     <footer className="bg-white shadow-md py-4 px-6 fixed bottom-0 w-full">
-      <div className="container mx-auto flex justify-between items-center">
+      <div className="container mx-auto flex flex-col md:flex-row justify-between items-center">
         <div className="text-[#601A35] text-sm">
           &copy; {new Date().getFullYear()} Vinance. All rights reserved.
         </div>
