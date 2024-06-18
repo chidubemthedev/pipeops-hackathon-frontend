@@ -12,7 +12,7 @@ module.exports = {
       },
       colors: {
         primary: "#601A35",
-        primaryHover: "#833a8c",
+        primaryHover: "#A64A70",
         generalBlack: "#0E0E0E",
         neutral: "#363636",
         neutral300: "#CFCFCF",

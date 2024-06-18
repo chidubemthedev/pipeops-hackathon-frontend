@@ -236,7 +236,7 @@ const ItemInput = () => {
           <Button
             name="Add Another Item"
             type="button"
-            className="max-w-[200px]"
+            className="max-w-[200px] bg-white border border-primary additem"
             onClick={addItem}
           />
           <Button

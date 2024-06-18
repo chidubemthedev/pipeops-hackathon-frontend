@@ -351,3 +351,11 @@ meter::-moz-meter-bar {
   color: #12ac8e;
   border-bottom: 4px solid #12ac8e;
 }
+
+.additem {
+  color: #601a35;
+}
+
+.additem:hover {
+  color: white;
+}
