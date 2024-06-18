@@ -33,7 +33,7 @@ const baseRoutes = [
     title: "Home",
   },
   {
-    path: "/orders/:id",
+    path: "/order/:id",
     element: <PaymentPage />,
   },
   {

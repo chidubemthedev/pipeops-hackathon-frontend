@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import Header from "../../components/payments/Header";
 import { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
@@ -11,17 +11,32 @@ import Footer from "../../components/payments/Footer";
 const PaymentPage = () => {
   const { id } = useParams();
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
   const loading = useAppSelector((state) => state.order.loading);
-  const [detailsModal, setDetailsModal] = useState(true);
+  const [detailsModal, setDetailsModal] = useState(false);
   const [responseMessage, setResponseMessage] = useState(
     "Your payment was successful!"
   );
 
   console.log(id);
 
-  // useEffect(() => {
-  //   dispatch(checkPaymenCode({ code: id }));
-  // });
+  useEffect(() => {
+    if (id) {
+      dispatch(checkPaymenCode({ code: id })).then((res) => {
+        if (res.meta.requestStatus === "fulfilled") {
+          console.log(res);
+          setResponseMessage(res.payload.message);
+          setTimeout(() => {
+            window.location.href = res.payload.data;
+          }, 2000);
+        } else {
+          console.log(res);
+          // setResponseMessage(res.payload.message);
+          // setDetailsModal(true);
+        }
+      });
+    }
+  }, [id, dispatch, navigate]);
 
   return (
     <div>
