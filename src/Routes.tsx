@@ -11,6 +11,7 @@ import UserRoutes from "./pages/User/routes";
 import PaymentPage from "./pages/payment";
 import ProtectedRoute from "./ProtectedRoute";
 import UserDashboard from "./pages/User/dashboard";
+import Success from "./pages/payment/Success";
 
 const baseRoutes = [
   {
@@ -35,6 +36,10 @@ const baseRoutes = [
   {
     path: "/order/:id",
     element: <PaymentPage />,
+  },
+  {
+    path: "/payment/success",
+    element: <Success />,
   },
   {
     path: "*",
