@@ -1,7 +1,7 @@
 /** this would wrap all the api endpoints and base urls */
 export const baseUrl =
   import.meta.env.VITE_APP_BASE_URL ??
-  "https://valid-side-deranged-harmony-production.pipeops.app/v1";
+  "https://pipeops-hackathon-backend.onrender.com/v1";
 // export const baseUrl = import.meta.env.VITE_BASE_URL;
 
 export const url = {

@@ -28,7 +28,7 @@ export const orderSlice = createSlice({
       })
       .addCase(generateOrder.fulfilled, (state, { payload }) => {
         state.loading = false;
-        state.responseUrl = payload.data.generatedUrl;
+        state.responseUrl = payload.data.generatedurl;
       })
       .addCase(generateOrder.rejected, (state) => {
         state.loading = false;

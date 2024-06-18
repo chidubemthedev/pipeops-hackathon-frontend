@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Button } from "../Button";
 import { InputField } from "../Input";
-import { useAppDispatch } from "../../app/hooks";
+import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import { generateOrder } from "../../features/orders/orderSlice";
 
 type ItemKeys = "item" | "total";
@@ -12,18 +12,20 @@ const ItemInput = () => {
     customerEmail: "",
     customerAddress: "",
     paidDelivery: false,
-    deliveryAmount: 0,
+    deliveryPrice: 0,
     totalAmount: 0,
     itemOrdered: [{ item: "", total: "" }],
   });
   // const [responseUrl, setResponseUrl] = useState("");
   const dispatch = useAppDispatch();
+  const { loading } = useAppSelector((state) => state.order);
+  const responseUrl = useAppSelector((state) => state.order.responseUrl);
 
   useEffect(() => {
     calculateTotalAmount();
   }, [
     customerDetails.itemOrdered,
-    customerDetails.deliveryAmount,
+    customerDetails.deliveryPrice,
     customerDetails.paidDelivery,
   ]);
 
@@ -61,7 +63,7 @@ const ItemInput = () => {
     const { name, value } = event.target;
     setCustomerDetails({
       ...customerDetails,
-      [name]: name === "deliveryAmount" ? parseFloat(value) : value,
+      [name]: name === "deliveryPrice" ? parseFloat(value) : value,
     });
   };
 
@@ -72,7 +74,7 @@ const ItemInput = () => {
     }, 0);
     const totalAmount =
       totalItemAmount +
-      (customerDetails.paidDelivery ? customerDetails.deliveryAmount : 0);
+      (customerDetails.paidDelivery ? customerDetails.deliveryPrice : 0);
     setCustomerDetails((prevState) => ({
       ...prevState,
       totalAmount,
@@ -84,7 +86,7 @@ const ItemInput = () => {
     console.log(customerDetails);
     dispatch(generateOrder(customerDetails)).then((res) => {
       console.log(res);
-      // setResponseUrl(res.payload?.data.generatedUrl);
+      console.log(responseUrl);
     });
   };
 
@@ -220,8 +222,8 @@ const ItemInput = () => {
           {customerDetails.paidDelivery && (
             <InputField
               required={false}
-              id="deliveryAmount"
-              name="deliveryAmount"
+              id="deliveryPrice"
+              name="deliveryPrice"
               type="num"
               placeholder="e.g 2500"
               classes="h-[56px] rounded-[12px] px-[16px] border border-[#E8EAED] max-w-[200px]"
@@ -237,7 +239,12 @@ const ItemInput = () => {
             className="max-w-[200px]"
             onClick={addItem}
           />
-          <Button name="Create Order" className="max-w-[200px]" type="submit" />
+          <Button
+            name="Create Order"
+            loading={loading}
+            className="max-w-[200px]"
+            type="submit"
+          />
         </div>
       </form>
     </div>

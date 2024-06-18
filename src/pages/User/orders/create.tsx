@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "../../../app/hooks";
 import Instagram from "../../../assets/images/Instagram.png";
 import Facebook from "../../../assets/images/facebook.svg";
@@ -12,6 +13,8 @@ import DashboardLayout from "../../../layouts/DashboardLayout";
 const CreateOrder = () => {
   const responseUrl = useAppSelector((state) => state.order.responseUrl);
   const dispatch = useAppDispatch();
+
+  useEffect(() => {}, [responseUrl]);
 
   const restoreDefault = () => {
     dispatch(clearState());
