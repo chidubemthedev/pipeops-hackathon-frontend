@@ -5,7 +5,7 @@ import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import { checkPaymenCode } from "../../features/orders/orderSlice";
 import { LoadingSpinner } from "../../components/Utils/LoadingSpinner";
 import Modal from "../../components/Modal";
-import SuccessGif from "../../assets/images/success.gif";
+import failure from "../../assets/images/failure.svg";
 import Footer from "../../components/payments/Footer";
 
 const PaymentPage = () => {
@@ -18,8 +18,6 @@ const PaymentPage = () => {
     "Your payment was successful!"
   );
 
-  console.log(id);
-
   useEffect(() => {
     if (id) {
       dispatch(checkPaymenCode({ code: id })).then((res) => {
@@ -29,10 +27,11 @@ const PaymentPage = () => {
           setTimeout(() => {
             window.location.href = res.payload.data;
           }, 2000);
-        } else {
-          console.log(res);
-          // setResponseMessage(res.payload.message);
-          // setDetailsModal(true);
+        } else if (res.meta.requestStatus === "rejected") {
+          setResponseMessage(
+            "This payment code is invalid. Please contact your seller for a new payment link."
+          );
+          setDetailsModal(true);
         }
       });
     }
@@ -66,8 +65,8 @@ const PaymentPage = () => {
             key="body"
             className="my-6 flex flex-col justify-center items-center"
           >
-            <img src={SuccessGif} alt="" width={200} height={200} />
-            <p>{responseMessage}</p>
+            <img src={failure} alt="" width={200} height={200} />
+            <p className="text-center mt-2">{responseMessage}</p>
           </div>
         </Modal>
       )}

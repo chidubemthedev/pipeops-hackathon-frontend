@@ -46,15 +46,6 @@ const baseRoutes = [
     element: <NotFound />,
     title: "not-found",
   },
-  // {
-  //   path: "/leagues/my-leagues",
-  //   element: (
-  //     <ProtectedRoute>
-  //       <Leagues />
-  //     </ProtectedRoute>
-  //   ),
-  //   title: "My Leagues",
-  // },
 ];
 
 const getRoutesByRole = (role: string) => {
