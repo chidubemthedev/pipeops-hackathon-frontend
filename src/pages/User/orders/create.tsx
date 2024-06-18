@@ -9,12 +9,26 @@ import Form from "../../../components/orders/Form";
 import Header from "../../../components/orders/Header";
 import { clearState } from "../../../features/orders/orderSlice";
 import DashboardLayout from "../../../layouts/DashboardLayout";
+import toast from "react-hot-toast";
 
 const CreateOrder = () => {
   const responseUrl = useAppSelector((state) => state.order.responseUrl);
   const dispatch = useAppDispatch();
 
   useEffect(() => {}, [responseUrl]);
+
+  const copyToClipboard = () => {
+    if (responseUrl) {
+      navigator.clipboard
+        .writeText(responseUrl)
+        .then(() => {
+          toast.success("Link copied to clipboard!");
+        })
+        .catch((err) => {
+          console.error("Failed to copy: ", err);
+        });
+    }
+  };
 
   const restoreDefault = () => {
     dispatch(clearState());
@@ -47,7 +61,10 @@ const CreateOrder = () => {
                   required
                   className="outline-none py-3 px-4 block w-full border border-[#e3e3e2] rounded-[16px] pl-4 placeholder:font-normal text-generalBlack"
                 />
-                <button className="absolute top-[10%] right-2.5 bg-primary font-gtwaalsheimpro rounded-xl text-white text-sm font-medium p-2.5 w-[auto] hover:cursor-pointer">
+                <button
+                  onClick={copyToClipboard}
+                  className="absolute top-[10%] right-2.5 bg-primary font-gtwaalsheimpro rounded-xl text-white text-sm font-medium p-2.5 w-[auto] hover:cursor-pointer"
+                >
                   Copy
                 </button>
               </div>
